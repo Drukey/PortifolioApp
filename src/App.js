@@ -1,46 +1,27 @@
-import React from 'react'
-import './App.css'
-import Header from './components/BackToTop'
-import AboutMe from './components/AboutMe'
+import React from 'react';
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
-import InfoCards from './components/InfoCards'
-import Footer from './components/Footer'
-
-import './css/bootstrap.min.css'
-
-// import background from "./img/marvin.jpg";
-// Below statement is div prop for local directory bg display
-// style={{ backgroundImage: `url(${background})` }}
+import Navbar from "./components/navbar.component"
+import ContactList from "./components/contacts-list.component";
+import EditContact from "./components/edit-contact.component";
+import CreateContact from "./components/create-contact.component";
+import CreateCustomer from "./components/create-customer.component";
 
 function App() {
   return (
-  <div className="App">
-    <div >   
-       <Header/> 
-    </div>
-
-
-   <div>   
-   <AboutMe/>
-   </div>
-
-
-
-   <div>   
-    <InfoCards/>
-    </div>
-
-
-    
-    
-    <br/>
-
-    <div>   
-    <Footer/>
-    </div>
-
-  
-  </div>  
+    <Router>
+      <div className="container">
+      <Navbar />
+      <br/>
+        <Routes>
+          <Route path="/" exact element = { < ContactList />} />
+          <Route path="/edit/:id" element = { < EditContact />} />
+          <Route path="/create" element = { < CreateContact />} />
+          <Route path="/user" element = { < CreateCustomer /> } />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
